@@ -1,8 +1,10 @@
 
-import 'flashlight_plugin_platform_interface.dart';
+import 'package:flutter/services.dart';
 
 class FlashlightPlugin {
-  Future<String?> getPlatformVersion() {
-    return FlashlightPluginPlatform.instance.getPlatformVersion();
+  static const MethodChannel _channel = MethodChannel('flashlight_plugin');
+
+  static Future<void> toggleLight() async {
+    await _channel.invokeMethod('toggleLight');
   }
 }
